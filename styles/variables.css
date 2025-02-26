@@ -1,1 +1,22 @@
 /* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
+:root {
+  --bg-gradient-color: repeating-linear-gradient(
+      to right,
+      #d3d3d3 0 2px,
+      transparent 2px 4px
+    ),
+    repeating-linear-gradient(to bottom, #d3d3d3 0 2px, transparent 2px 4px),
+    linear-gradient(to bottom, #e7e7e7 0.01%, #1a1a1a);
+  --wdth-Inter-Bold: 700;
+  --wdth-Inter-light: 400;
+  --font-Inter: "Inter-Variable";
+  --font-PressStart2P: "PressStart2P-Regular";
+  --block-width: 527px;
+  --block-width_Desktop: 568px;
+  --card-width: 375px;
+  --white: #fff;
+  --black: #000;
+  --red: rgba(255, 0, 0, 1);
+  --unlike: opacity(100%);
+  --like: black;
+}
