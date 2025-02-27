@@ -13,7 +13,7 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
-  font-family: var(--font-Inter) serif;
+  font-family: var(--font-Inter), sans-serif;
   font-variation-settings: "wdth" var(--wdth-Inter-light);
   display: flex;
   flex-direction: column;
@@ -27,36 +27,30 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-block-size: var(--block-width);
   padding-block: clamp(100px, 100px, 370px);
-}
-
-.block-width {
-  min-inline-size: clamp(375px, 537px, 700px);
+  min-inline-size: clamp(375px, 100%, 700px);
 }
 
 .title {
   display: grid;
-  grid-template-rows: 170px 1fr;
   row-gap: 19px;
-  grid-template-rows: repeate(2, min-content);
-  flex-direction: column;
   justify-content: center;
-  background-color: var(--whit);
+  background-color: var(--white);
   min-inline-size: 100%;
-  min-block-size: 327px;
   border: 2px solid var(--black);
+  padding-block-start: 120px;
+  padding-block-end: 120px;
 }
 
 .title_logo {
-  font-family: var(--font-PressStart2P), serif;
+  font-family: var(--font-PressStart2P), sans-serif;
   font-size: clamp(3.0625rem, 2.7109rem + 1.5vw, 4.0625rem);
   line-height: 49px;
   align-self: end;
 }
 
 .title_heading {
-  font-family: var(--font-PressStart2P), serif;
+  font-family: var(--font-PressStart2P), sans-serif;
   font-size: clamp(0.875rem, 0.6758rem + 0.8500000000000001vw, 1.4375rem);
   line-height: 14px;
   justify-self: center;
@@ -69,10 +63,6 @@
   gap: 50px;
 }
 
-.main_section:last-child {
-  margin-block-end: 100px;
-}
-
 .label_position {
   position: relative;
 }
@@ -81,12 +71,13 @@
   position: absolute;
   right: 10px;
   top: 25px;
-  font-family: var(--font-PressStart2P), sans-serif;
+  font-family: var(--font-PressStart2P), sans-sans-serif;
   font-size: 14px;
   mix-blend-mode: hard-light;
   text-shadow: -1px 0 var(--white), 0 1px var(--white), 1px 0 var(--white),
     0 -1px var(--white);
   opacity: 0.5;
+  z-index: 1;
 }
 
 .text_uppercase {
@@ -108,7 +99,7 @@
   grid-template-rows: repeat(3, min-content);
   max-inline-size: var(--card-width);
   border: 2px solid var(--black);
-  row-gap: 27px;
+  row-gap: 23px;
   background-color: var(--white);
 }
 
@@ -122,7 +113,6 @@
   inline-size: 100%;
   padding-block-end: 10px;
   padding: 0px;
-  border: 2px solid var(--black);
 }
 
 .filter_contrast {
@@ -154,7 +144,7 @@
 }
 
 .card_text {
-  font-family: var(--font-Inter), serif;
+  font-family: var(--font-Inter), sans-serif;
   font-size: 18px;
   line-height: 21.78px;
   color: var(--black);
@@ -164,39 +154,36 @@
   padding-block-end: 6px;
 }
 
+.border-bottom {
+  border-bottom: 2px solid var(--black);
+}
+
+.section_description {
+  display: grid;
+  row-gap: 27px;
+}
+
 .description {
   padding-inline-start: 25px;
   padding-block-start: 0px;
   padding-inline-end: 26px;
-  padding-block-end: 0px;
-  text-shadow: var(--black) 2px -2px 5px;
-}
-
-@supports (
-  (text-stroke: var(--black) 2px -2px 5px) or
-    (-webkit-text-stroke: var(--black) 2px -2px 5px)
-) {
-  .description {
-    -webkit-text-stroke: var(--black) 2px -2px 5px;
-    text-stroke: var(--black) 2px -2px 5px;
-    text-shadow: none;
-  }
+  padding-block-end: 1px;
 }
 
 .text_Inter-Bold {
   line-height: 21px;
-  font-weight: var(--wdth-Inter-Bold);
+  font-variation-settings: "wght" var(--wdth-Inter-Bold);
 }
 
-.text_Inter-light {
+.text_inter-light {
   line-height: 21px;
-  font-weight: var(--wdth-Inter-light);
+  font-variation-settings: "wght" var(--wdth-Inter-light);
 }
 
 .section_button {
   display: grid;
   grid-template-columns: min-content 130px;
-  grid-template-rows: 36px;
+  grid-template-rows: min-content;
   justify-content: end;
   padding-inline-end: 25px;
   margin-block-end: 25px;
@@ -221,7 +208,7 @@
 
 .button__text {
   font-size: 14px;
-  font-family: var(--font-PressStart2P);
+  font-family: var(--font-PressStart2P), sans-serif;
   background-color: transparent;
   position: relative;
   text-align: center;
@@ -231,6 +218,10 @@
 .button_like {
   border: 2px solid var(--black);
   padding-block-start: 4px;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--white);
+  transition: box-shadow 0.3s ease;
 }
 
 .button_save {
@@ -245,11 +236,9 @@
   background-color: transparent;
   row-gap: 8px;
   margin-block-end: 100px;
-}
-
-.icon_save {
-  width: 28px;
-  height: 28px;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--white);
 }
 
 dialog[open] {
@@ -259,9 +248,6 @@ dialog[open] {
   padding-inline-start: 42px;
   padding-inline-end: 42px;
   max-inline-size: 341px;
-  min-block-size: 191px;
-  overflow: hidden;
-  inset-block-start: 228px;
 }
 
 dialog[open]::backdrop {
@@ -270,11 +256,9 @@ dialog[open]::backdrop {
 }
 
 .dialog-content {
-  min-inline-size: 257px;
   display: grid;
   row-gap: 30px;
-  align-items: center;
-  grid-template-rows: 63px min-content;
+  z-index: 2;
 }
 
 .dialog-content svg {
@@ -291,16 +275,15 @@ dialog[open]::backdrop {
   min-block-size: 100%;
 }
 
-.btn {
-  cursor: pointer;
-  background-color: transparent;
+.button-ok {
   min-inline-size: 257px;
   min-block-size: 38px;
   padding-block-start: 6px;
+  border: 2px solid black;
 }
 
 .bnt_text {
-  font-family: var(--font-PressStart2P), serif;
+  font-family: var(--font-PressStart2P), sans-serif;
   font-size: 14px;
   line-height: 150%;
   text-transform: uppercase;
@@ -308,45 +291,31 @@ dialog[open]::backdrop {
 
 .dialog_button {
   min-block-size: 38px;
-  font-family: var(--font-PressStart2P, serif);
-  font-size: var(--wdth-Inter-light);
+  font-family: var(--font-PressStart2P, sans-serif);
+  font-variation-settings: "wght" var(--wdth-Inter-light);
   text-transform: uppercase;
   font-size: 14px;
 }
 
-.button_like:focus {
+.button_shadow:focus {
   outline: none;
-  box-shadow: 2px 2px var(--black);
+  box-shadow: 2px 2px 0 rgb(0 0 0);
 }
 
 .card__icon-button:focus-visible {
   outline: 2px solid var(--black);
   outline-offset: -2px;
-}
-
-.button_save:focus {
-  outline: none;
-  box-shadow: 2px 2px var(--black);
-}
-
-.button_like {
-  position: relative;
-  overflow: hidden;
-  background-color: var(--white);
-}
-
-.button_save {
-  position: relative;
-  overflow: hidden;
-  background-color: var(--white);
+  transition: outline 0.3s ease;
 }
 
 .icon_save {
   position: relative;
   overflow: hidden;
+  text-align: center;
+  mix-blend-mode: difference;
 }
 
-.button_like::before {
+.black_transition::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -356,46 +325,12 @@ dialog[open]::backdrop {
   translate: -100%;
 }
 
-.button_save::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-color: var(--black);
-  transform-origin: left;
-  transition: translate 0.5s ease-in-out;
-  translate: -100%;
-}
-
-.icon_save::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-color: var(--black);
-  transform-origin: left;
-  transition: translate 0.5s ease-in-out;
-  translate: -100%;
-}
-
-.button_like:hover:before {
-  translate: 0%;
-}
-
-.button_save:hover:before {
-  translate: 0%;
-}
-
-.icon_save:hover:before {
+.black_transition:hover:before {
   translate: 0%;
 }
 
 .transition {
   color: var(--white);
-}
-
-.icon_save {
-  position: relative;
-  text-align: center;
-  mix-blend-mode: difference;
 }
 
 .filter-white {
@@ -404,10 +339,9 @@ dialog[open]::backdrop {
 
 @media (width > 375px) {
   .title {
-    min-inline-size: 700px;
-    min-block-size: 368px;
-    grid-template-rows: 192px 1fr;
     row-gap: 25px;
+    padding-block-start: 130px;
+    padding-block-end: 130px;
   }
   .title_logo {
     line-height: 65px;
@@ -418,7 +352,7 @@ dialog[open]::backdrop {
   }
 
   .image {
-    block-size: 696px;
+    max-block-size: 696px;
   }
 
   .label {
@@ -438,14 +372,18 @@ dialog[open]::backdrop {
     justify-content: center;
   }
 
-  .icon_save {
-    width: 21px;
-    height: 21px;
-  }
-
   dialog[open] {
     max-inline-size: 353px;
     min-block-size: 191px;
-    inset-block-start: -70px;
+    padding-inline-start: 26px;
+    padding-inline-end: 30px;
+  }
+
+  .button-ok {
+    min-inline-size: 293px;
+  }
+
+  .dialog-content svg {
+    margin-inline-end: 15px;
   }
 }
